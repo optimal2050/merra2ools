@@ -22,10 +22,10 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 
-**merra2ools** is an R package and dataset for evaluating the potential output of variable energy resources (VER) — specifically wind and solar — globally, using over 40 years of hourly MERRA-2 reanalysis data. The dataset was assembled, and the package initially developed, to support the authors' internal and collaborative energy modeling studies, and is made available for public use. Further development will be guided by the needs of related research projects and contributions from the broader community. See [Roadmap](<https://optimal2050.github.io/merra2ools/articles/roadmap.html>) for details.
+**merra2ools** is an R package and dataset for evaluating the potential output of variable energy resources (VER) — specifically wind and solar — globally, using over 40 years of hourly MERRA-2 reanalysis data. The dataset was assembled, and the package initially developed, to support the authors' internal and collaborative energy modeling studies, and is made available for public use. Further development will be guided by the needs of related research projects and contributions from the broader community. See [{dev-status}](<https://optimal2050.github.io/merra2ools/articles/roadmap.html>) for details.
 
 ## Purpose
-The primary goal of merra2ools is to provide energy modelers and analysts with:
+The primary goal of merra2ools is to provide energy modelers and analysts with:  
 - A curated, long-term subset of MERRA-2 data relevant to energy modeling.  
 - A toolkit for estimating hourly potential output and capacity factors of wind and solar energy.  
 - Basic support for hydro power output potential using precipitation and surface runoff indicators.  
@@ -127,6 +127,12 @@ include_graphics(fig_file)
 ```
  
 See the [MERRA-2 subset](<https://optimal2050.github.io/merra2ools/articles/merra2.html>) article (or call `vignette("merra2", package = "merra2ools")`) for a complete list of included time series and a detailed description of the dataset.
+
+## Data movies  
+Youtube channel [merra2ools](https://www.youtube.com/@merra2ools) features visualization of 40 years of hourly (60 h/s) wind speed using the `merra2ools` package.  
+[![Watch the demo](https://img.youtube.com/vi/d83ciEVmkos/hqdefault.jpg)](https://youtu.be/d83ciEVmkos?si=t3cxZswjv_-MX706)
+
+> Click the image to watch the wind speed visualization demo on YouTube.
 
 ## Contributing
 We welcome contributions to the merra2ools package! Please see our [Contributing Guidelines](https://optimal2050.github.io/merra2ools/CONTRIBUTING.html) for details on how to get involved. Or simply open an issue, pull request, or feature request on GitHub. 

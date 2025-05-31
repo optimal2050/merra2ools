@@ -19,14 +19,15 @@ the authors’ internal and collaborative energy modeling studies, and is
 made available for public use. Further development will be guided by the
 needs of related research projects and contributions from the broader
 community. See
-[Roadmap](https://optimal2050.github.io/merra2ools/articles/roadmap.html)
+[{dev-status}](https://optimal2050.github.io/merra2ools/articles/roadmap.html)
 for details.
 
 ## Purpose
 
 The primary goal of merra2ools is to provide energy modelers and
-analysts with: - A curated, long-term subset of MERRA-2 data relevant to
-energy modeling.  
+analysts with:  
+- A curated, long-term subset of MERRA-2 data relevant to energy
+modeling.  
 - A toolkit for estimating hourly potential output and capacity factors
 of wind and solar energy.  
 - Basic support for hydro power output potential using precipitation and
@@ -136,6 +137,16 @@ subset](https://optimal2050.github.io/merra2ools/articles/merra2.html)
 article (or call `vignette("merra2", package = "merra2ools")`) for a
 complete list of included time series and a detailed description of the
 dataset.
+
+## Data movies
+
+Youtube channel [merra2ools](https://www.youtube.com/@merra2ools)
+features visualization of 40 years of hourly (60 h/s) wind speed using
+the `merra2ools` package.  
+[![Watch the
+demo](https://img.youtube.com/vi/d83ciEVmkos/hqdefault.jpg)](https://youtu.be/d83ciEVmkos?si=t3cxZswjv_-MX706)
+
+> Click the image to watch the wind speed visualization demo on YouTube.
 
 ## Contributing
 

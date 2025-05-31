@@ -42,6 +42,8 @@ knitr::opts_chunk$set(
 
 - Prepare package for **CRAN submission** (tests, checks, metadata cleanup)
 - Complete **pkgdown** reference site with articles and function documentation
+- Functions to fetch data from Data Driad and/or Zenodo by `time`
+- Functions to fetch data from MERRA-2 API directly
 - Update datasets for latest MERRA-2 data (2021–2024)
 
 ---
