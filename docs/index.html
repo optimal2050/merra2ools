@@ -18,7 +18,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="R-tools to process MERRA-2 data (NASA) with focus on renewable energy">
 <meta name="description" content="A toolbox for evaluation of hourly availability of solar and wind energy potential globally, based on MERRA-2 satellite reanalysis data subset (requires the data download from: https://doi.org/10.5061/dryad.v41ns1rtt).">
 <meta property="og:description" content="A toolbox for evaluation of hourly availability of solar and wind energy potential globally, based on MERRA-2 satellite reanalysis data subset (requires the data download from: https://doi.org/10.5061/dryad.v41ns1rtt).">
-<meta property="og:image" content="https://energyRt.github.io/merra2ools/logo.png">
+<meta property="og:image" content="https://optimal2050.github.io/merra2ools/logo.png">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-00GHMPMM37"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -85,7 +85,7 @@
 </div>
 <!-- badges: start -->
 
-<p><strong>merra2ools</strong> is an R package and dataset for evaluating the potential output of variable energy resources (VER) — specifically wind and solar — globally, using over 40 years of hourly MERRA-2 reanalysis data. The dataset was assembled, and the package initially developed, to support the authors’ internal and collaborative energy modeling studies, and is made available for public use. Further development will be guided by the needs of related research projects and contributions from the broader community. See <a href="https://optimal2050.github.io/merra2ools/articles/roadmap.html" class="external-link">{dev-status}</a> for details.</p>
+<p><strong>merra2ools</strong> is an R package and dataset for evaluating the potential output of variable energy resources (VER) — specifically wind and solar — globally, using over 40 years of hourly MERRA-2 reanalysis data. The dataset was assembled, and the package initially developed, to support the authors’ internal and collaborative energy modeling studies, and is made available for public use. Further development will be guided by the needs of related research projects and contributions from the broader community. See <a href="https://optimal2050.github.io/merra2ools/articles/roadmap.html">{dev-status}</a> for details.</p>
 <div class="section level2">
 <h2 id="purpose">Purpose<a class="anchor" aria-label="anchor" href="#purpose"></a>
 </h2>
@@ -187,23 +187,23 @@
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pkg_install</a></span><span class="op">(</span><span class="st">"optimal2050/merra2sample"</span><span class="op">)</span> <span class="co"># optional - example dataset</span></span></code></pre></div>
 <p>Download datasets from <a href="https://doi.org/10.5061/dryad.v41ns1rtt" class="external-link uri">https://doi.org/10.5061/dryad.v41ns1rtt</a> to a local folder. It is not required to download all the data, but it is suggested to download at least for one full year (12 months).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://optimal2050.github.io/merra2ools/" class="external-link">merra2ools</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://optimal2050.github.io/merra2ools/">merra2ools</a></span><span class="op">)</span></span>
 <span><span class="co"># link the package with the downloaded data</span></span>
 <span><span class="fu"><a href="reference/merra2.html">set_merra2_options</a></span><span class="op">(</span>merra2.dir <span class="op">=</span> <span class="st">"PATH TO THE DOWNLOADED DATA"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/merra2.html">get_merra2_dir</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># check if the path is saved</span></span>
 <span><span class="fu"><a href="reference/merra2.html">check_merra2</a></span><span class="op">(</span>detailed <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code></pre></div>
-<p>See <a href="https://optimal2050.github.io/merra2ools/articles/merra2ools.html" class="external-link">Get started</a> article (or call <code><a href="articles/merra2ools.html">vignette("merra2ools", package = "merra2ools")</a></code>) for details.</p>
+<p>See <a href="https://optimal2050.github.io/merra2ools/articles/merra2ools.html">Get started</a> article (or call <code><a href="articles/merra2ools.html">vignette("merra2ools", package = "merra2ools")</a></code>) for details.</p>
 </div>
 <div class="section level2">
 <h2 id="example-data">Example data<a class="anchor" aria-label="anchor" href="#example-data"></a>
 </h2>
 <p>The package reproduces basic algorithms of solar geometry, irradiance decomposition, and the Plane-Of-Array models for different types of solar PV trackers.<br>
-See <a href="https://optimal2050.github.io/merra2ools/articles/solarpower.html" class="external-link">Solar Power</a> article (or call<code><a href="articles/solarpower.html">vignette("solarpower", package = "merra2ools")</a></code>) for details.</p>
+See <a href="https://optimal2050.github.io/merra2ools/articles/solarpower.html">Solar Power</a> article (or call<code><a href="articles/solarpower.html">vignette("solarpower", package = "merra2ools")</a></code>) for details.</p>
 <p><img src="reference/figures/ghi_40y_avr_24steps.png" width="2550"></p>
 <p>The package includes basic algorithms for estimating wind power potential and capacity factors. It uses the MERRA-2 wind speed at 10 and 50 meters above ground level (AGL) to extrapolate wind speed at higher altitudes and estimates the wind power potential based on given wind power curves.<br>
-See <a href="https://optimal2050.github.io/merra2ools/articles/windpower.html" class="external-link">Wind Power</a> article (or call <code><a href="articles/windpower.html">vignette("windpower", package = "merra2ools")</a></code>) for details.</p>
+See <a href="https://optimal2050.github.io/merra2ools/articles/windpower.html">Wind Power</a> article (or call <code><a href="articles/windpower.html">vignette("windpower", package = "merra2ools")</a></code>) for details.</p>
 <p><img src="reference/figures/wind_50m_40y_avr_24steps.png" width="3150"></p>
-<p>See the <a href="https://optimal2050.github.io/merra2ools/articles/merra2.html" class="external-link">MERRA-2 subset</a> article (or call <code><a href="articles/merra2.html">vignette("merra2", package = "merra2ools")</a></code>) for a complete list of included time series and a detailed description of the dataset.</p>
+<p>See the <a href="https://optimal2050.github.io/merra2ools/articles/merra2.html">MERRA-2 subset</a> article (or call <code><a href="articles/merra2.html">vignette("merra2", package = "merra2ools")</a></code>) for a complete list of included time series and a detailed description of the dataset.</p>
 </div>
 <div class="section level2">
 <h2 id="data-movies">Data movies<a class="anchor" aria-label="anchor" href="#data-movies"></a>
@@ -216,7 +216,7 @@ See <a href="https://optimal2050.github.io/merra2ools/articles/windpower.html" c
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h2>
-<p>We welcome contributions to the merra2ools package! Please see our <a href="https://optimal2050.github.io/merra2ools/CONTRIBUTING.html" class="external-link">Contributing Guidelines</a> for details on how to get involved. Or simply open an issue, pull request, or feature request on GitHub.</p>
+<p>We welcome contributions to the merra2ools package! Please see our <a href="https://optimal2050.github.io/merra2ools/CONTRIBUTING.html">Contributing Guidelines</a> for details on how to get involved. Or simply open an issue, pull request, or feature request on GitHub.</p>
 </div>
 <div class="section level2">
 <h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
@@ -227,7 +227,7 @@ See <a href="https://optimal2050.github.io/merra2ools/articles/windpower.html" c
 <h2 id="citing-merra2ools">Citing merra2ools<a class="anchor" aria-label="anchor" href="#citing-merra2ools"></a>
 </h2>
 <ul>
-<li><p>Lugovoy, O., &amp; Gao, S. (2023). <em>merra2ools: Satellite data and tools for retrospective assessment of renewable energy production</em> (R package version 0.1.05). Available at: <a href="https://optimal2050.github.io/merra2ools/" class="external-link uri">https://optimal2050.github.io/merra2ools/</a></p></li>
+<li><p>Lugovoy, O., &amp; Gao, S. (2023). <em>merra2ools: Satellite data and tools for retrospective assessment of renewable energy production</em> (R package version 0.1.05). Available at: <a href="https://optimal2050.github.io/merra2ools/" class="uri">https://optimal2050.github.io/merra2ools/</a></p></li>
 <li><p>The solar PV performance estimation module in <code>merra2ools</code> reproduces core elements of the modeling approach described by the <a href="https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/" class="external-link">Solar PV Performance Modeling Collaborative (PVPMC)</a>.</p></li>
 </ul>
 </div>
