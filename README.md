@@ -1,16 +1,93 @@
 
-# merra2ools
+# merra2ools <a href="https://optimal2050.github.io/merra2ools/"><img src="man/figures/logo.png" align="right" height="103" alt="merra2ools website" /></a>
 
-(UNDER CONSTRUCTION)
+<!-- badges: start -->
 
-manuals: <https://energyRt.github.io/merra2ools/>  
-dataset: <https://doi.org/10.5061/dryad.v41ns1rtt>
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/merra2ools)](https://CRAN.R-project.org/package=merra2ools)
+[![Contributor
+Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+<!-- badges: end -->
+
+**merra2ools** is an R package and dataset for evaluating the potential
+output of variable energy resources (VER) — specifically wind and solar
+— globally, using over 40 years of hourly MERRA-2 reanalysis data. The
+dataset was assembled, and the package initially developed, to support
+the authors’ internal and collaborative energy modeling studies, and is
+made available for public use. Further development will be guided by the
+needs of related research projects and contributions from the broader
+community. See
+[Roadmap](https://optimal2050.github.io/merra2ools/articles/roadmap.html)
+for details.
+
+## Purpose
+
+The primary goal of merra2ools is to provide energy modelers and
+analysts with: - A curated, long-term subset of MERRA-2 data relevant to
+energy modeling.  
+- A toolkit for estimating hourly potential output and capacity factors
+of wind and solar energy.  
+- Basic support for hydro power output potential using precipitation and
+surface runoff indicators.
+
+## Features
+
+- Access to a global, multi-decade MERRA-2 dataset compressed for
+  efficient use.  
+- Scaled and rounded time series data stored as compressed integers to
+  reduce storage while preserving relevant signal.
+- Functions to estimate capacity factors and potential output across
+  regions and time.
+
+## Data & Compression
+
+The `merra2ools` dataset includes a **41-year (1980–2020)** hourly time
+series of selected indicators from the NASA MERRA-2 reanalysis dataset.
+The data is preprocessed, scaled, and compressed to reduce file size
+while preserving sufficient accuracy for renewable energy modeling. The
+data is downloadable from
+[Dryad](https://doi.org/10.5061/dryad.v41ns1rtt) cloud repository. A
+sample data can be installed from the `merra2sample` package.
+
+### Index columns
+
+Each record is indexed by:
+
+- **`UTC`** — Hourly timestamp in Coordinated Universal Time (UTC)  
+- **`locid`** — Location ID (integer from 1 to 207,936, corresponding to
+  MERRA-2 grid cells)
+
+### Variables
+
+| Variable | Description |
+|----|----|
+| `W10M` | Wind speed at 10 m, computed as `sqrt(U10M² + V10M²)`, rounded to 0.1 m/s |
+| `W50M` | Wind speed at 50 m, computed similarly, rounded to 0.1 m/s |
+| `WDIR` | Wind direction at 50 m, `atan2(V50M, U50M)`, rounded to nearest 10° |
+| `T10M` | Air temperature at 10 m (°C), rounded to nearest integer |
+| `SWGDN` | Surface shortwave radiation (W/m²), rounded to nearest integer |
+| `ALBEDO` | Surface albedo \[0–1\], rounded to 0.01 |
+| `PRECTOTCORR` | Total precipitation (kg/m²/h), bias-corrected, rounded to 0.1 |
+| `RHOA` | Surface air density (kg/m³), rounded to 0.01 |
+
+### Compression
+
+- All values are stored as **scaled integers** to reduce size while
+  maintaining numerical usability.
+- Files are compressed using a high-efficiency format (e.g., `fst` with
+  potential conversion to `parquet`, or custom binary) to keep the total
+  dataset under 300 GB.
+- Partial data loading is supported, allowing users to work with only
+  the necessary time periods or variables.
 
 ## Installation
 
 ``` r
-remotes::install_github("energyRt/merra2ools")
-remotes::install_github("energyRt/merra2sample") # optional - example dataset
+# install.packages("pak") # if not installed
+pak::pkg_install("optimal2050/merra2ools") # install the package
+pak::pkg_install("optimal2050/merra2sample") # optional - example dataset
 ```
 
 Download datasets from <https://doi.org/10.5061/dryad.v41ns1rtt> to a
@@ -25,101 +102,91 @@ get_merra2_dir()  # check if the path is saved
 check_merra2(detailed = T)
 ```
 
-See <https://energyrt.github.io/merra2ools/articles/merra2ools.html> or
-\`vignette(“merra2ools”, “merra2ools”) for details.
+See [Get
+started](https://optimal2050.github.io/merra2ools/articles/merra2ools.html)
+article (or call `vignette("merra2ools", package = "merra2ools")`) for
+details.
 
-## Overview
-
-*merra2ools* is a dataset and R-package for evaluation of potential
-output of variable energy sources (VER) wind and solar energy globally,
-based on 40+ years of hourly MERRA-2 data. The primary purpose of the
-`merra2ools` R package is to provide a quick access to the MERRA-2
-subset to energy modelers and analysts, sufficient for evaluation VER
-hourly potential. The database of relevant MERRA-2 indicators has been
-assembled and published on
-
-that offers data and tools to estimate
-
-long-term subset of
-
-that provides
-
-package offers a set of tools and MERRA-2 data subset to evaluate hourly
-output potential of solar and wind energy sources, as well as
-precipitations for weather-dependent hydro power output. The goal of the
-project is to provide both - the dataset and algorithms to estimate
-potential output and so-called capacity factors for variable energy
-sources, used as an input data in energy system modeling and broader
-application. To keep the size of the database lower than 300Gb for
-online publication, the original subset of MERRA-2 time series have been
-minimally processed, rounded, and saved as scaled integers in highly
-compressed format provided by
-[`fst`](https://www.fstpackage.org/index.html) package.  
-The *merra2ools* dataset has 41 years (1980-2000) of the hourly
-time-series:  
-- **UTC** - date and time (key) in Coordinated Universal Time (UTC)
-timezone;  
-- **locid** - location IDs (key), an index of locations in MERRA-2
-dataset, from 1 to 207936;  
-- **W10M** - 10-meter wind speed (calculated `sqrt(V10M^2 + U10M^2)`
-where `V10M` and `U10M` are northward and eastward wind at 10-meter,
-m/s, rounded to the first decimal place);  
-- **W50M** - 50-meter wind speed (calculated `sqrt(V50M^2 + U50M^2)`
-where `V50M` and `U50M` are northward and eastward wind at 50-meter,
-m/s, rounded to the first decimal place);  
-- **WDIR** - Direction of wind at 50-meter height (calculated
-`atan2(V50M/U50M)`, rounded to tens);  
-- **T10M** - 10-meter air temperature (Celsius, rounded to the nearest
-integer);  
-- **SWGDN** - Incident shortwave land (W/m^2, rounded to the nearest
-integer);  
-- **ALBEDO** - Surface albedo (index \[0,1\], rounded to second decimal
-place);  
-- **PRECTOTCORR** - Bias corrected total precipitation (kg/m^2/hour,
-rounded to the first decimal place);  
-- **RHOA** - Air density at surface (kg/m^2, rounded to second decimal
-place).
-
-Representation of wind with three variables (`W10M`, `W50M`, `WDIR`) is
-the main difference from the original MERRA-2 data (`V10M`, `U10M`,
-`V50M`, `U50M`). This conversion reduces the size of the database and
-further computational burden of wind power capacity factors.
-
-All variables are hourly averages, UTC-time is given for a middle of
-every hour.
-
-The *merra2ools* package includes:  
-- MERRA-2 grid information and functions to match geo-locations with
-MERRA-2 grid;  
-- functions to read and subset data from the compressed files (`fst`
-format);  
-- functions and methods to evaluate solar photovoltaics hourly
-output/capacity factors;  
-- functions and methods wind speed extrapolation for higher altitudes
-(50-200+ meters) and estimate wind power capacity factors;  
-- functions to fetch data from NREL’s PVWatts model and the dataset by
-locations (with a goal of validation the POA model and the data);  
-- functions and methods for “quick” figures and animated gif figures for
-instant evaluation of the data and the used methodology;  
-- long term summary statistics of the provided time series for purpose
-of clustering and aggregation in further modeling and analytics.
-
-## Solar Power
+## Example data
 
 The package reproduces basic algorithms of solar geometry, irradiance
 decomposition, and the Plane-Of-Array models for different types of
-solar PV trackers. See
-<https://energyrt.github.io/merra2ools/articles/solarpower.html> or
-`vignette("solarpower", package = "merra2ools")` for details.
+solar PV trackers.  
+See [Solar
+Power](https://optimal2050.github.io/merra2ools/articles/solarpower.html)
+article (or call`vignette("solarpower", package = "merra2ools")`) for
+details.
 
 <img src="man/figures/ghi_40y_avr_24steps.png" width="2550" />
 
-## Wind power
+The package includes basic algorithms for estimating wind power
+potential and capacity factors. It uses the MERRA-2 wind speed at 10 and
+50 meters above ground level (AGL) to extrapolate wind speed at higher
+altitudes and estimates the wind power potential based on given wind
+power curves.  
+See [Wind
+Power](https://optimal2050.github.io/merra2ools/articles/windpower.html)
+article (or call `vignette("windpower", package = "merra2ools")`) for
+details.
 
-See <https://energyrt.github.io/merra2ools/articles/windpower.html> or
-`vignette("windpower", package = "merra2ools")` for details.  
 <img src="man/figures/wind_50m_40y_avr_24steps.png" width="3150" />
 
-See <https://energyrt.github.io/merra2ools/articles/merra2.html> or
-`vignette("merra2", package = "merra2ools")` for all included
-timeseries.
+See the [MERRA-2
+subset](https://optimal2050.github.io/merra2ools/articles/merra2.html)
+article (or call `vignette("merra2", package = "merra2ools")`) for a
+complete list of included time series and a detailed description of the
+dataset.
+
+## Contributing
+
+We welcome contributions to the merra2ools package! Please see our
+[Contributing
+Guidelines](https://optimal2050.github.io/merra2ools/CONTRIBUTING.html)
+for details on how to get involved. Or simply open an issue, pull
+request, or feature request on GitHub.
+
+## License
+
+This package is licensed under the [GNU Affero General Public License
+v3.0](https://www.gnu.org/licenses/agpl-3.0.en.html). The data is
+available under the [CC0 1.0 Universal (CC0 1.0) Public Domain
+Dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+
+## Citing merra2ools
+
+- Lugovoy, O., & Gao, S. (2023). *merra2ools: Satellite data and tools
+  for retrospective assessment of renewable energy production* (R
+  package version 0.1.05). Available at:
+  <https://optimal2050.github.io/merra2ools/>
+
+- The solar PV performance estimation module in `merra2ools` reproduces
+  core elements of the modeling approach described by the [Solar PV
+  Performance Modeling Collaborative
+  (PVPMC)](https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/).
+
+## Citing MERRA-2 Data
+
+- Gelaro, R., et al. (2017). *The Modern-Era Retrospective Analysis for
+  Research and Applications, Version 2 (MERRA-2)*. *Journal of Climate*,
+  **30**(14), 5419–5454. <https://doi.org/10.1175/JCLI-D-16-0758.1>
+
+- Bosilovich, M. G., Lucchesi, R., & Suarez, M. (2016). *MERRA-2: File
+  Specification*. GMAO Office Note No. 9 (Version 1.1), 73 pp. Available
+  at: <http://gmao.gsfc.nasa.gov/pubs/office_notes>
+
+- NASA Global Modeling and Assimilation Office (GMAO). *MERRA-2: The
+  Modern-Era Retrospective analysis for Research and Applications,
+  Version 2*. Available at:
+  <https://gmao.gsfc.nasa.gov/reanalysis/merra-2/>
+
+- Global Modeling and Assimilation Office (GMAO) (2015), *MERRA-2
+  tavg1_2d_rad_Nx: 2d, 1-Hourly, Time-Averaged, Single-Level,
+  Assimilation, Radiation Diagnostics, 0.625 x 0.5 degree, V5.12.4
+  (M2T1NXRAD)* at GES DISC. Accessed: 2019–2020. DOI:
+  [10.5067/Q9QMY5PBNV1T](https://doi.org/10.5067/Q9QMY5PBNV1T)
+
+- Global Modeling and Assimilation Office (GMAO) (2015), *MERRA-2
+  tavg1_2d_slv_Nx: 2d, 1-Hourly, Time-Averaged, Single-Level,
+  Assimilation, Single-Level Diagnostics, V5.12.4 (M2T1NXSLV)* at GES
+  DISC. Accessed: 2019–2020. DOI:
+  [10.5067/VJAFPLI1CSIV](https://doi.org/10.5067/VJAFPLI1CSIV)

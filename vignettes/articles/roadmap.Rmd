@@ -1,0 +1,59 @@
+---
+title: "Development Status and Roadmap"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+`merra2ools` has been initially developed to support authors' internal and collaborative energy modeling studies and is now made available for public use. While the package already includes essential functionality for accessing long-term MERRA-2 data and estimating wind and solar capacity factors, it remains under development. Future improvements will be guided by the needs of related research projects and contributions from the broader community.
+
+### ✅ Version 0.1.0 – Initial Release *(current)*
+
+- The subset of the MERRA-2 dataset is available as a **data package** in `fst` format
+- Data query functions to access **41 years of hourly MERRA-2 data** (1980–2020) by `UTC` and `locid`
+- Estimation of **hourly capacity factors** for wind and solar based on MERRA-2 indicators
+- Support for **clustering** of locations using temporal correlation across neighboring cells
+
+---
+
+### 🚧 Planned for v0.2.0 – Data Access Optimization
+
+- **Integration with `arrow`** for memory-efficient, on-disk queries (no full dataset load)
+- Export functions for preparing input data for (supported) energy system models
+
+---
+
+### 📘 Planned for v0.3.0 – Algorithm Review & Validation
+
+- Revision and documentation of algorithms for:
+  - Wind power output and capacity factors (adjusted for height, density, cut-in/cut-out)
+  - Solar power estimation under different tracking/tilt assumptions
+  - Clustering methods for spatial aggregation of locations
+- Publish methodology documentation and example workflows
+- Peer-review of core methods and validation against external benchmarks
+
+---
+
+### 🚀 Planned for v0.4.0 – Publication and CRAN Release
+
+- Prepare package for **CRAN submission** (tests, checks, metadata cleanup)
+- Complete **pkgdown** reference site with articles and function documentation
+- Update datasets for latest MERRA-2 data (2021–2024)
+
+---
+
+### 💡 Future Ideas (v0.5.0+)
+
+- Add support for **precipitation-based hydro inflow estimation**
+- Enable **regional aggregation** and capacity factor mapping
+- Interactive dashboards or **Shiny app** for data exploration
+- Integration with external models (e.g., `energyRt`, `multimod`)
+- Visualization tools for spatial data (e.g., `ggplot2`, `leaflet`)  
+- Writing a mirror package in Python and/or Julia for wider accessibility  
+
+## Contact  
+Collaborators and sponsors please contact us via email <SupportOpenSource@optimalsolution.dev>.  

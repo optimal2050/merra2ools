@@ -1,11 +1,39 @@
 url: https://energyRt.github.io/merra2ools/
 
 template:
+  bootstrap: 5
+  light-switch: true
+  bslib:
+    bootswatch: cosmo
   params:
-    bootswatch: flatly
     ganalytics: G-00GHMPMM37
 
 figures:
   dev: grDevices::png
   fig.ext: [png, gif]  
+  dpi: 300
   
+development:
+  mode: unreleased
+  version_label: danger
+
+navbar:
+  structure:
+    left:  [intro, reference, roadmap, articles, news]
+    right: [search, github, lightswitch]
+  components:
+    news:
+      text: News
+      href: news/index.html
+    articles:
+      text: Articles
+      menu:
+      - text: MERRA2 subset
+        href: articles/merra2.html
+      - text: Solar Power
+        href: articles/solarpower.html
+      - text: Wind Power
+        href: articles/windpower.html
+    roadmap:
+      text: "{dev-status}"
+      href: articles/roadmap.html  

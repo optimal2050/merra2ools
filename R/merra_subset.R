@@ -284,7 +284,7 @@ add_coord <- function(x, replace = FALSE) {
   # x <- dplyr::left_join(x, locid[,1:3], by = "locid")
   # y <- data.table::as.data.table(locid[,1:3])
   
-  x <- merge(x, locid[,1:3], by = "locid", 
+  x <- merge(x, merra2ools::locid[,1:3], by = "locid", 
              all.x = TRUE, all.y = FALSE, sort = FALSE)
   return(x)
 }

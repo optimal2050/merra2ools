@@ -1,7 +1,8 @@
 Package: merra2ools
 Type: Package
 Title: R-tools to process MERRA-2 data (NASA) with focus on renewable energy 
-Version: 0.1.04
+Version: 0.1.05
+Date: 2024-05-15
 Authors@R: 
   c(person(given = "Oleg", 
           family = "Lugovoy", 
@@ -13,8 +14,8 @@ Authors@R:
           email = "gaoshuo@cet.net.cn", 
           role = c("aut")))
 Maintainer: Oleg Lugovoy <olugovoy@gmail.com>
-URL: https://energyRt.github.io/merra2ools/
-BugReports: https://github.com/energyRt/merra2ools/issues
+URL: https://optimal2050.github.io/merra2ools/
+BugReports: https://github.com/optimal2050/merra2ools/issues
 Description: A toolbox for evaluation of hourly availability of solar and wind 
     energy potential globally, based on MERRA-2 satellite reanalysis data subset 
     (requires the data download from: https://doi.org/10.5061/dryad.v41ns1rtt). 
@@ -43,6 +44,7 @@ Suggests:
 License: AGPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 RdMacros: mathjaxr
 VignetteBuilder: knitr
+Config/Needs/website: rmarkdown

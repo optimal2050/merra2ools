@@ -6,13 +6,15 @@
 \alias{merra2ools-package}
 \title{merra2ools: R-tools to process MERRA-2 data (NASA) with focus on renewable energy}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 A toolbox for evaluation of hourly availability of solar and wind energy potential globally, based on MERRA-2 satellite reanalysis data subset (requires the data download from: https://doi.org/10.5061/dryad.v41ns1rtt).
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://energyRt.github.io/merra2ools/}
-  \item Report bugs at \url{https://github.com/energyRt/merra2ools/issues}
+  \item \url{https://optimal2050.github.io/merra2ools/}
+  \item Report bugs at \url{https://github.com/optimal2050/merra2ools/issues}
 }
 
 }
