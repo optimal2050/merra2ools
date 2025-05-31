@@ -25,8 +25,9 @@ for details.
 ## Purpose
 
 The primary goal of merra2ools is to provide energy modelers and
-analysts with: - A curated, long-term subset of MERRA-2 data relevant to
-energy modeling.  
+analysts with:  
+- A curated, long-term subset of MERRA-2 data relevant to energy
+modeling.  
 - A toolkit for estimating hourly potential output and capacity factors
 of wind and solar energy.  
 - Basic support for hydro power output potential using precipitation and

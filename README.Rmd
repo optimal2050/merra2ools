@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 **merra2ools** is an R package and dataset for evaluating the potential output of variable energy resources (VER) — specifically wind and solar — globally, using over 40 years of hourly MERRA-2 reanalysis data. The dataset was assembled, and the package initially developed, to support the authors' internal and collaborative energy modeling studies, and is made available for public use. Further development will be guided by the needs of related research projects and contributions from the broader community. See [Roadmap](<https://optimal2050.github.io/merra2ools/articles/roadmap.html>) for details.
 
 ## Purpose
-The primary goal of merra2ools is to provide energy modelers and analysts with:
+The primary goal of merra2ools is to provide energy modelers and analysts with:  
 - A curated, long-term subset of MERRA-2 data relevant to energy modeling.  
 - A toolkit for estimating hourly potential output and capacity factors of wind and solar energy.  
 - Basic support for hydro power output potential using precipitation and surface runoff indicators.  
